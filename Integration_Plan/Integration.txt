@@ -1,0 +1,44 @@
+## Integration Plan for Weed Detection & Autonomous Navigation Robot
+
+### **Objective:**
+Integrate the ML-based weed detection model, FPGA-based path planning, and walking robot into a single system.
+
+### **Components:**
+1. **ML Model (Python & TensorFlow/Keras):** Identifies weeds in images.
+2. **FPGA Path Planning (Verilog):** Determines optimal movement based on detected weeds.
+3. **Walking Robot (Arduino C):** Executes movement based on FPGA decisions.
+
+### **Integration Steps:**
+#### **1. Hardware Communication Setup**
+- Use **Raspberry Pi / Jetson Nano / ESP32** as a central controller.
+- Establish **UART/SPI/I2C** communication between FPGA and microcontroller.
+- Connect FPGA output to Arduino for movement execution.
+
+#### **2. ML Model Deployment**
+- Convert the Python ML model into a lightweight format (TFLite or ONNX).
+- Deploy it on an **edge device (Raspberry Pi or Jetson Nano).**
+- Ensure real-time image processing with a camera module.
+
+#### **3. FPGA Path Planning Integration**
+- FPGA receives weed location data from the ML model.
+- Processes path planning logic based on field conditions.
+- Outputs movement signals to the robot controller.
+
+#### **4. Robot Movement Synchronization**
+- Arduino receives signals from FPGA to control motor actions.
+- Implement PID control for smooth navigation.
+- Test movement coordination with real-time weed detection.
+
+### **Challenges & Solutions:**
+- **Latency Issues:** Optimize ML inference and FPGA decision-making.
+- **Power Management:** Use a stable power source for all components.
+- **Data Transmission Reliability:** Use buffered communication protocols.
+
+### **Future Enhancements:**
+- Integrate GPS for autonomous field coverage.
+- Implement cloud-based monitoring for real-time analytics.
+- Enhance weed detection accuracy with a larger dataset.
+
+### **Conclusion:**
+The integration of ML, FPGA, and robotics will create an autonomous weed detection and removal system, improving efficiency in precision agriculture.
+
