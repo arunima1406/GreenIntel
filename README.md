@@ -1,4 +1,3 @@
-"# GreenIntel"
 # Weed Detection & Autonomous Navigation Robot
 
 This project is an AI-powered autonomous robot designed for smart weed detection and navigation.
