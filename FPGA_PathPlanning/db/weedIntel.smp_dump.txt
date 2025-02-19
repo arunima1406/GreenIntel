@@ -1,0 +1,6 @@
+
+State Machine - |weedIntel|direction
+Name direction.01 direction.11 direction.00 
+direction.00 0 0 0 
+direction.01 1 0 1 
+direction.11 0 1 1 

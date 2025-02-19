@@ -1,0 +1,46 @@
+module weedIntel (
+    input wire clk,        // Clock signal
+    input wire reset,      // Reset signal to initialize the position
+    input wire plant,      // Plant detection signal (1 = plant detected, 0 = no plant)
+    output reg move_right, // Move right signal
+    output reg move_left,  // Move left signal
+    output reg move_front, // Move front signal
+    output reg stop        // Stop signal
+);
+
+    // Define 4x4 grid boundaries
+    reg [1:0] x, y;  // x and y coordinates (0 to 3 for 4x4 grid)
+
+    // Initialize the robot position at (0,0)
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            x <= 2'b00;  // x = 0
+            y <= 2'b00;  // y = 0
+        end
+        else begin
+            // Default movement is forward
+            move_right <= 0;
+            move_left <= 0;
+            move_front <= 0;
+            stop <= 0;
+
+            // If plant is detected, stop the movement
+            if (plant == 1) begin
+                stop <= 1;  // Stop movement
+            end
+            else begin
+                // Default movement is forward
+                if (x < 3) begin
+                    move_front <= 1;  // Move forward
+                    x <= x + 1;  // Increment x coordinate
+                end
+                else begin
+                    // If moving forward exceeds grid limit, stop
+                    move_front <= 0;
+                    stop <= 1;  // Stop when reaching the edge
+                end
+            end
+        end
+    end
+
+endmodule

@@ -1,0 +1,33 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "front",
+					"strict" : false
+				},
+				{
+					"name" : "right",
+					"strict" : false
+				},
+				{
+					"name" : "stop",
+					"strict" : false
+				},
+				{
+					"name" : "plant",
+					"strict" : false
+				},
+				{
+					"name" : "clock",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
